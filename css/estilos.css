@@ -1,76 +1,114 @@
 body{
+    min-height: 100vh;
+    margin: 0;
 
-
-
+    display: flex;
+    justify-content: center; /* centra horizontalmente */
+    align-items: center;     /* centra verticalmente */
+    overflow-x: hidden;
+    overflow-y: hidden;
     background: linear-gradient(
         135deg,
         #fce4ec,
         #f8d7e4,
         #f9cfe0
     );
-
-    position: relative;
-    font-family: Arial, sans-serif;
 }
-
-
+/* Formas decorativas */
 body::before{
     content: "";
     position: absolute;
-    width: 600px;
-    height: 600px;
-    background: rgba(255, 182, 193, 0.25);
+    width: 700px;
+    height: 700px;
     border-radius: 50%;
-    bottom: -250px;
-    left: -250px;
+    background: rgba(255, 182, 193, 0.25);
+    left: -300px;
+    bottom: -5px;
 }
-
 
 body::after{
     content: "";
     position: absolute;
     width: 700px;
     height: 700px;
-    background: rgba(255, 192, 203, 0.25);
     border-radius: 50%;
-    top: -250px;
-    right: -250px;
-    z-index: -1;
+    background: rgba(255, 192, 203, 0.25);
+    right: -300px;
+    top: -300px;
 }
 
-
+/* Tarjeta */
 .card{
+    border: none;
+    border-radius: 20px;
     background: rgba(255,255,255,0.9);
     backdrop-filter: blur(5px);
-    border-radius: 20px;
-    border: none;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.icono-login {
-    width: 120px;
-    height: 120px;
-
-    background-color: #fae5ed;
+/* Imagen */
+.icono-login img{
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    margin: 0 auto 20px auto;
+    background-color: #fce4ec;
+    padding: 10px;
 }
 
-.icono-login img {
-    width: 60px;
-    height: 60px;
+/* Título */
+.titulo-login{
+    color: #3b3b3b;
+    font-weight: bold;
 }
 
-.btn {
-    background-color: #ee7aaa;
+/* Inputs */
+.input-group-text{
+    background-color: #fff5f7;
+    border: 1px solid #f8bbd0;
+    color: #f48fb1;
+}
+
+.form-control{
+    border: 1px solid #f8bbd0;
+}
+
+.form-control:focus{
+    border-color: #f48fb1;
+    box-shadow: 0 0 0 0.2rem rgba(244, 143, 177, 0.25);
+}
+
+/* Botón */
+.btn-login{
+    background-color: #f48fb1;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn-login:hover{
+    background-color: #ec6f9f;
     color: white;
 }
-navbar {
-    margin-bottom: 30px;
+
+/* Enlace */
+a{
+    color: #f48fb1;
+    font-weight: 500;
+}
+
+a:hover{
+    color: #ec6f9f;
+}
+
+/* Tarjeta */
+.contenedor{
+    width: 400px;
+    height: 550px;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
     z-index: 1;
 }
