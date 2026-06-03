@@ -14,7 +14,7 @@ body{
         #f9cfe0
     );
 } 
-/* Formas decorativas */
+/* Formas decorativas  */
 body::before{
     content: "";
     position: absolute;
