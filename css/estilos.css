@@ -13,6 +13,7 @@
         #f8d7e4,
         #f9cfe0
     );
+    z-index: 1;
 }
 
 body{
@@ -28,15 +29,25 @@ body{
 
 /*Botones barra de navegacion*/
 .btn-nav{
-    background-color: #ffffff;
+    background-color: #ffffff;  
+    border-radius: 20px;
+    padding: 8px 18px;
 }
 
+.btn-eliminar{
+    background-color: #e74c3c;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    transition: 0.3s;
+    color: white;
+}
 
 /* Formas decorativas  */
 .decoracion-fondo{
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: 0;
 }
 
 .decoracion-fondo::before{
@@ -53,7 +64,7 @@ body{
     left: -300px;
     bottom: -5px;
 
-    z-index: -1;
+    z-index: 0;
 }
 
 .decoracion-fondo::after{
@@ -70,7 +81,7 @@ body{
     right: -300px;
     top: -300px;
 
-    z-index: -1;
+    z-index: 0;
 }
 
 /* Tarjeta */
@@ -113,18 +124,18 @@ body{
 }
 
 /* Botón */
-.btn-login{
-    background-color: #f48fb1;
+.btn-form{
+    background-color: #ee7aaa;
     color: white;
     border: none;
     padding: 10px 25px;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: 0.3s;
 }
 
-.btn-login:hover{
+.btn-form:hover{
     background-color: #ec6f9f;
-    color: white;
+    color: rgb(146, 143, 143);
 }
 
 /* Enlace */
