@@ -17,12 +17,13 @@
 
 body{
     overflow-x: hidden; /* elimina scroll horizontal */
-    overflow-y: hidden; /* elimina scroll vertical */
 }
 
 /*Barra de navegacion*/
 .navbar{
+    position: relative;
     background-color: #ee7aaa;
+    z-index: 10;
 }
 
 /*Botones barra de navegacion*/
@@ -30,27 +31,46 @@ body{
     background-color: #ffffff;
 }
 
+
 /* Formas decorativas  */
-body::before{
-    content: "";
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    border-radius: 50%;
-    background: rgba(255, 182, 193, 0.25);
-    left: -300px;
-    bottom: -5px;
+.decoracion-fondo{
+    position: fixed;
+    inset: 0;
+    z-index: -1;
 }
 
-body::after{
+.decoracion-fondo::before{
     content: "";
-    position: absolute;
+    position: fixed;
+
     width: 700px;
     height: 700px;
+
     border-radius: 50%;
+
+    background: rgba(255, 182, 193, 0.25);
+
+    left: -300px;
+    bottom: -5px;
+
+    z-index: -1;
+}
+
+.decoracion-fondo::after{
+    content: "";
+    position: fixed;
+
+    width: 700px;
+    height: 700px;
+
+    border-radius: 50%;
+
     background: rgba(255, 192, 203, 0.25);
+
     right: -300px;
     top: -300px;
+
+    z-index: -1;
 }
 
 /* Tarjeta */
