@@ -13,7 +13,7 @@ body{
         #f8d7e4,
         #f9cfe0
     );
-}
+} 
 /* Formas decorativas */
 body::before{
     content: "";
