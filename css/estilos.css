@@ -1,6 +1,10 @@
-body{
+.fondo-principal{
     min-height: 100vh;
     margin: 0;
+
+    display: flex;
+    justify-content: center; /* centra horizontalmente */
+    align-items: center;     /* centra verticalmente */
     overflow-x: hidden;
     overflow-y: hidden;
     background: linear-gradient(
@@ -9,7 +13,23 @@ body{
         #f8d7e4,
         #f9cfe0
     );
-} 
+}
+
+body{
+    overflow-x: hidden; /* elimina scroll horizontal */
+    overflow-y: hidden; /* elimina scroll vertical */
+}
+
+/*Barra de navegacion*/
+.navbar{
+    background-color: #ee7aaa;
+}
+
+/*Botones barra de navegacion*/
+.btn-nav{
+    background-color: #ffffff;
+}
+
 /* Formas decorativas  */
 body::before{
     content: "";
@@ -31,13 +51,6 @@ body::after{
     background: rgba(255, 192, 203, 0.25);
     right: -300px;
     top: -300px;
-}
-
-.login-page{
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /* Tarjeta */
@@ -111,7 +124,7 @@ a:hover{
     background: rgba(255,255,255,0.85);
     backdrop-filter: blur(5px);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(109, 35, 35, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     position: relative;
     z-index: 1;
 }
