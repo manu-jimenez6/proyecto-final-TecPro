@@ -67,7 +67,7 @@
                     <button
                         class="btn btn-form"
                         data-bs-toggle="modal"
-                        data-bs-target="#modalNuevoUsuario">
+                        data-bs-target="#modalAgregarUsuario">
 
                         <i class="bi bi-plus-lg me-2"></i>
                         Nuevo usuario
@@ -287,8 +287,10 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">
-                        <i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>
+                    <div class="icono-modal">
+                        <img src="icon/peligro.png" alt="Peligro" width="30" height="30" class="d-inline-block">
+                    </div>
+                    <h5 class="modal-title fw-bold ms-3">
                         Confirmar eliminación
                     </h5>
 
@@ -304,7 +306,7 @@
                         ¿Esta seguro de que desea eliminar el usuario?
                     </p>
 
-                    <p class="text-danger fw-semibold">
+                    <p class="fw-semibold" style="color: #ec6f9f;">
                         Esta acción no se puede deshacer.
                     </p>
                 </div>
@@ -312,7 +314,7 @@
                 <div class="modal-footer">
                     <button
                         type="button"
-                        class="btn btn-secondary"
+                        class="badge-rol"
                         data-bs-dismiss="modal">
 
                         Cancelar
@@ -320,7 +322,7 @@
 
                     <button
                         type="button"
-                        class="btn btn-eliminar">
+                        class="btn btn-form">
 
                         Sí, eliminar usuario
                     </button>
@@ -421,6 +423,79 @@
         </div>
 
     </div>
+
+        <!-- Ventana modal Agregar Usuario -->
+    <div class="modal fade" id="modalAgregarUsuario" tabindex="-1">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Cabecera -->
+                <div class="modal-header">
+                    <div class="icono-modal">
+                        <img src="icon/usuario3.png" alt="Agregar" width="30" height="30" class="d-inline-block">
+                    </div>
+                    <h5 class="modal-title fw-bold ms-3">
+                        Agregar nuevo usuario
+                    </h5>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                    </button>
+                </div>
+
+                <!-- Cuerpo -->
+                <div class="modal-body">
+                <p> 
+                    <i class="bi bi-info-circle-fill me-2"></i>
+                    Ingresa la información del usuario que desea agregar.
+                </p>
+
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">
+                            <i class="bi bi-file-earmark-person-fill fs-4"></i>
+                        </span>
+
+                        <input type="text" class="form-control" placeholder="Nombre">
+                    </div>
+                
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">
+                            <i class="bi bi-envelope-heart-fill fs-4"></i>
+                        </span>
+
+                        <input type="email" class="form-control" placeholder="Correo electronico">
+                    </div>
+
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">
+                            <i class="bi bi-lock-fill fs-4"></i>
+                        </span>
+
+                        <input type="password" class="form-control" placeholder="Contraseña">
+                    </div>
+
+                </div>
+
+                <!-- Pie -->
+                <div class="modal-footer">
+
+                    <button id="btn-agregar"
+                        type="button"
+                        class="btn btn-form">
+                        <i class="bi bi-floppy-fill me-2"></i>
+                        Agregar usuario
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

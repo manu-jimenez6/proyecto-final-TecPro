@@ -197,7 +197,6 @@ a:hover{
     background-color: #fce4ec;
     flex-shrink: 0;
     padding-left: 10px;
-
 }
 
 .icono-modal img{
@@ -228,6 +227,17 @@ a:hover{
     background-color: #ffffff;
     color: #ee7aaa;
     font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.badge-rol-delete{
+    display: inline-block;
+    padding: 5px 12px;
+    border: 1px solid #ee7aaa;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #ee7aaa;
+    font-size: 1.15rem;
     font-weight: 600;
 }
 
