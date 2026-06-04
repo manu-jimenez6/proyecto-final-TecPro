@@ -178,13 +178,99 @@ a:hover{
     z-index: 1;
 }
 
-.icono-admin img{
+.icono-admin{
     display: flex;
     align-items: center;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     background-color: #fce4ec;
     padding: 10px;
 }
 
+.icono-modal{
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fce4ec;
+    flex-shrink: 0;
+    padding-left: 10px;
+
+}
+
+.icono-modal img{
+    width: 30px;
+    height: 30px;
+}
+
+.btn-accion{
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background-color: #fde6ef;
+    color: #ee7aaa;
+    transition: all .3s;
+}
+
+.btn-accion:hover{
+    background-color: #ee7aaa;
+    color: white;
+}
+
+.badge-rol{
+    display: inline-block;
+    padding: 5px 12px;
+    border: 1px solid #ee7aaa;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #ee7aaa;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Botón del dropdown */
+.btn-rol{
+    background: #fce4ec;
+    color: #ec6f9f;
+
+    border: 1px solid #f8bbd0;
+    border-radius: 12px;
+
+    font-weight: 600;
+    padding: 12px;
+
+    transition: all .3s ease;
+}
+
+.btn-rol:hover{
+    background: #f8d7e4;
+    color: #e45d95;
+}
+
+.btn-rol:focus{
+    box-shadow: 0 0 0 0.25rem rgba(238,122,170,.25);
+}
+
+.dropdown-menu{
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    padding: 8px;
+}
+
+.dropdown-item{
+    border-radius: 8px;
+    color: #555;
+    font-weight: 500;
+    padding: 10px 14px;
+    transition: .2s;
+}
+
+.dropdown-item:hover{
+    background: #fce4ec;
+    color: #ec6f9f;
+}
