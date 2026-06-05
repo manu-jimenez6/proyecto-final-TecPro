@@ -33,11 +33,8 @@ form.addEventListener("submit", async (e) => {
         if (!respuesta.ok) {
             throw new Error(data.mensaje || "Credenciales incorrectas");
         }
-
-        localStorage.setItem(
-            "usuario",
-            JSON.stringify(data)
-        );
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("usuario", JSON.stringify(data.usuario || data));
 
         alert("Login correcto");
 

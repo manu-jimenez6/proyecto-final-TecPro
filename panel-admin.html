@@ -44,7 +44,7 @@
                 <div class="card">
                     <div class="card-body d-flex align-items-center gap-2 p-4">
                        <img src="icon/mono.png" alt="mono" class="icono-admin">
-                        <h1>Bienvenido, Administrador</h1>
+                        <h1 id="bienvenida"></h1>
                         
                     </div>
                 </div>
@@ -83,10 +83,7 @@
                         <i class="bi bi-search"></i>
                     </span>
 
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Buscar por nombre o correo...">
+                    <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre o correo...">
 
                 </div>
 
@@ -106,43 +103,9 @@
 
                         </thead>
 
-                        <tbody>
+                        <tbody id="tabla-usuarios">
 
-                            <tr>
-
-                                <td>Ana López</td>
-
-                                <td>ana@app.com</td>
-
-                                <td>
-                                    <span class="badge-rol">
-                                        Admin
-                                    </span>
-                                </td>
-
-                                <td>
-
-                                    <button
-                                        class="btn btn-accion"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalEditarUsuario">
-
-                                        <i class="bi bi-pencil-fill"></i>
-
-                                    </button>
-
-                                    <button
-                                        class="btn btn-accion"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalConfirmarEliminarUsuario">
-                                        
-                                        <i class="bi bi-trash-fill"></i>
-
-                                    </button>
-
-                                </td>
-
-                            </tr>
+                            
 
                         </tbody>
 
@@ -457,7 +420,7 @@
                             <i class="bi bi-file-earmark-person-fill fs-4"></i>
                         </span>
 
-                        <input type="text" class="form-control" placeholder="Nombre">
+                        <input type="text" class="form-control" id="nuevo-nombre" placeholder="Nombre">
                     </div>
                 
                     <div class="input-group mb-4">
@@ -465,7 +428,7 @@
                             <i class="bi bi-envelope-heart-fill fs-4"></i>
                         </span>
 
-                        <input type="email" class="form-control" placeholder="Correo electronico">
+                        <input type="email" class="form-control" id="nuevo-correo" placeholder="Correo electronico">
                     </div>
 
                     <div class="input-group mb-4">
@@ -473,7 +436,7 @@
                             <i class="bi bi-lock-fill fs-4"></i>
                         </span>
 
-                        <input type="password" class="form-control" placeholder="Contraseña">
+                        <input type="password" class="form-control" id="nuevo-password" placeholder="Contraseña">
                     </div>
 
                 </div>
@@ -501,5 +464,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Despues de aca coloco mis js-->
+     <script src="js/admin.js"></script>
 </body>
 </html>
