@@ -108,3 +108,41 @@ document
 
         window.location.href = "index.html";
     });
+
+const btnConfirmarEliminar =
+    document.getElementById("btn-confirmar-eliminar");
+
+btnConfirmarEliminar.addEventListener("click", async () => {
+
+    try {
+
+        const respuesta = await fetch(
+            "http://localhost:8080/api/usuarios/perfil/baja",
+            {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${usuario.token}`
+                }
+            }
+        );
+
+        const mensaje = await respuesta.text();
+
+        if (!respuesta.ok) {
+            throw new Error(mensaje);
+        }
+
+        alert(mensaje);
+
+        localStorage.removeItem("usuario");
+
+        window.location.href = "index.html";
+
+    } catch (error) {
+
+        console.error(error);
+        alert(error.message);
+
+    }
+
+});
