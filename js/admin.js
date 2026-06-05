@@ -1,6 +1,8 @@
 const usuario = JSON.parse(localStorage.getItem("usuario"));
 let usuarioAEliminar = null;
-
+let usuarioAEditar = null;
+let idRolSeleccionado = null;
+const btnGuardar = document.getElementById("btn-guardar-edicion");
 
 if (!usuario) {
     window.location.href = "login.html";
@@ -20,7 +22,7 @@ btnLogout.addEventListener("click", () => {
 
     localStorage.removeItem("usuario");
 
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 });
 
 const tablaUsuarios =
@@ -41,35 +43,45 @@ async function cargarUsuarios() {
         const usuarios = await respuesta.json();
         tablaUsuarios.innerHTML = "";
         usuarios.forEach((user) => {
-        tablaUsuarios.innerHTML += `
-        <tr>
-            <td>${user.nombre}</td>
-            <td>${user.correo}</td>
-            <td>
-                <span class="badge-rol">
-                    ${user.rol}
-                </span>
-            </td>
-            <td>
-                <button
-                    class="btn btn-accion btn-editar"
-                    data-id="${user.id}"
-                    data-bs-toggle="modal"
-                    data-bs-target="#modalEditarUsuario">
-                    <i class="bi bi-pencil-fill"></i>
-                </button>
 
-                <button
-                    class="btn btn-accion btn-eliminar"
-                    data-id="${user.id}"
-                    data-bs-toggle="modal"
-                    data-bs-target="#modalConfirmarEliminarUsuario">
-                    <i class="bi bi-trash-fill"></i>
-                </button>
-            </td>
-        </tr>
-        `;
-    });
+            const esMismoUsuario = user.id === usuario.id;
+
+            tablaUsuarios.innerHTML += `
+            <tr>
+                <td>${user.nombre}</td>
+                <td>${user.correo}</td>
+
+                <td>
+                    <span class="badge-rol">
+                        ${user.rol}
+                    </span>
+                </td>
+
+                <td>
+
+                    <button
+                        class="btn btn-accion btn-editar"
+                        data-id="${user.id}"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEditarUsuario">
+
+                        <i class="bi bi-pencil-fill"></i>
+                    </button>
+
+                    <button
+                        class="btn btn-accion btn-eliminar"
+                        data-id="${user.id}"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalConfirmarEliminarUsuario"
+                        ${esMismoUsuario ? "disabled title='No puedes eliminarte a ti mismo'" : ""}>
+
+                        <i class="bi bi-trash-fill"></i>
+                    </button>
+
+                </td>
+            </tr>
+            `;
+        });
     } catch (error) {
         console.error(error);
         alert("Error cargando usuarios");
@@ -118,6 +130,24 @@ document.addEventListener("click", (e) => {
     }
 });
 
+document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".btn-editar");
+
+    if (!btn) return;
+
+    const id = btn.dataset.id;
+
+    usuarioAEditar = id;
+
+    const fila = btn.closest("tr");
+
+    const nombre = fila.children[0].textContent;
+    const correo = fila.children[1].textContent;
+
+    document.querySelector("#modalEditarUsuario input[type='text']").value = nombre;
+    document.querySelector("#modalEditarUsuario input[type='email']").value = correo;
+});
+
 const btnConfirmarEliminar =
     document.getElementById("btn-confirmar-eliminar");
 btnConfirmarEliminar.addEventListener("click", async () => {
@@ -143,6 +173,90 @@ btnConfirmarEliminar.addEventListener("click", async () => {
         console.error(error);
         alert("Error eliminando usuario");
     }
+});
+
+btnGuardar.addEventListener("click", async () => {
+
+    if (!usuarioAEditar) return;
+
+    const nombre = document.getElementById("edit-nombre").value;
+    const correo = document.getElementById("edit-correo").value;
+    const contrasena = document.getElementById("edit-password").value;
+
+    try {
+
+        const respuesta = await fetch(
+            `http://localhost:8080/api/usuarios/${usuarioAEditar}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${usuario.token}`
+                },
+                body: JSON.stringify({
+                    nombre,
+                    correo,
+                    contrasena,
+                    idRol: idRolSeleccionado 
+                })
+            }
+        );
+
+        const data = await respuesta.json();
+
+        alert("Usuario actualizado correctamente");
+
+        // cerrar modal
+        const modal = bootstrap.Modal.getInstance(
+            document.getElementById("modalEditarUsuario")
+        );
+        modal.hide();
+
+        cargarUsuarios();
+
+    } catch (error) {
+        console.error(error);
+        alert("Error editando usuario");
+    }
+});
+
+
+document.querySelectorAll(".role-option").forEach(option => {
+    option.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        idRolSeleccionado = option.dataset.idrol;
+
+        const texto = option.textContent.trim();
+
+        document.getElementById("btn-rol").innerHTML =
+            `<i class="bi bi-person-heart me-2"></i> Rol: ${texto}`;
+    });
+});
+
+document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".btn-editar");
+    if (!btn) return;
+
+    const fila = btn.closest("tr");
+
+    const nombre = fila.children[0].textContent;
+    const correo = fila.children[1].textContent;
+
+    const rolTexto = fila.children[2].textContent.trim();
+
+    if (rolTexto.toUpperCase() === "ADMIN") {
+        idRolSeleccionado = 1;
+    } else {
+        idRolSeleccionado = 2;
+    }
+    usuarioAEditar = btn.dataset.id;
+
+    document.getElementById("edit-nombre").value = nombre;
+    document.getElementById("edit-correo").value = correo;
+
+    const btnRol = document.getElementById("btn-rol");
+    btnRol.innerHTML = `<i class="bi bi-person-heart me-2"></i> Rol: ${rolTexto}`;
 });
 
 /* =========================
