@@ -35,6 +35,8 @@ form.addEventListener("submit", async (e) => {
         }
         localStorage.setItem("token", data.token);
         localStorage.setItem("usuario", JSON.stringify(data.usuario || data));
+        localStorage.setItem("usuario", JSON.stringify(data)
+);
 
         alert("Login correcto");
 
